@@ -13,10 +13,14 @@
 	
 	//3. 연결 후 그 통로를 통해 sql문을 실행한다.
 	String sql = "select * from review";
+	
+	
 	Statement stmt = con.createStatement();
+	
 	
 	//4. SQL 실행
 	ResultSet rs = stmt.executeQuery(sql);
+	
 %>
 
 
@@ -44,16 +48,21 @@
   <table class="table table-striped">
     <thead>
       <tr>
+      	<!-- <th>No.</th> -->
         <th>닉네임</th>
         <th>도서명</th>
         <th>리뷰내용</th>
       </tr>
       
 <%
-	while(rs.next()){
+	while(rs.next()){		
+		
+		int rNum = rs.getInt("rNum");
 		String name = rs.getString("name");
 		String bName = rs.getString("bName");
 		String content = rs.getString("content");
+		
+		
 
 %>
 
@@ -62,13 +71,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><%=name %></td>
+        <td><a href=updateReview.jsp?rNum=<%=rNum %>><%=name %></a></td>
         <td><%=bName %></td>
         <td><%=content %></td>
         <%	}%>
         
     </tbody>
   </table>
+  
+  <h6>*번호를 클릭하면 수정화면으로 넘어갑니다.</h6>
 </div>
 
 </body>

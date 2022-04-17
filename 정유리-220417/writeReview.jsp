@@ -26,7 +26,7 @@
 	</div>
 	<div class="form-group">
   <label>도서명</label>
-  <input type="text" class="form-control" name="bName">
+  <textarea class="form-control" rows="1" name="bName"></textarea>
 	</div>
 	<div class="form-group">
   <label>리뷰내용</label>
